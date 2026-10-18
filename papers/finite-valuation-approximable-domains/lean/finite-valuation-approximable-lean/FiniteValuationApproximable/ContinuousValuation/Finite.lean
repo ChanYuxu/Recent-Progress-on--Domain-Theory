@@ -1,0 +1,391 @@
+import FiniteValuationApproximable.ContinuousValuation.Basic
+import FiniteValuationApproximable.Abstract.FiniteScott
+import FiniteValuationApproximable.FiniteValuation.ProbabilityFS
+import Mathlib.Data.ENNReal.BigOperators
+import Mathlib.Data.Set.Card
+import Mathlib.Order.Preorder.Finite
+
+/-!
+# Continuous valuations on a finite poset
+
+This module identifies the genuine Jones--Plotkin continuous
+subprobability valuations on a finite poset with the finite atomic vectors
+used as the stages in the definition of `FVA`.  The proof is internal:
+Scott opens are exactly upper sets, and modularity reconstructs a valuation
+from the masses of its atoms.
+-/
+
+set_option autoImplicit false
+set_option linter.unnecessarySimpa false
+
+universe u
+
+namespace FiniteValuationApproximable
+namespace ContinuousValuation
+
+open Set
+open scoped BigOperators ENNReal
+open AbramskyJung.Chapter2
+open SubprobabilityVector
+
+section FiniteScottOpens
+
+variable {P : Type u} [Fintype P] [PartialOrder P]
+
+/-- Every upper set of a finite poset is Scott open. -/
+def upperSetToScottOpen (U : UpperSet P) : ScottOpen P where
+  carrier := U
+  isScottOpen := by
+    constructor
+    · exact U.upper'
+    · intro A s hA hs hsU
+      rcases hA.exists_isSup_of_finite (Set.toFinite A) with
+        ⟨m, hmA, hm⟩
+      have hms : m = s := hm.unique hs
+      exact ⟨m, hmA, hms.symm ▸ hsU⟩
+
+/-- Forget Scott inaccessibility and retain the underlying upper set. -/
+def scottOpenToUpperSet (U : ScottOpen P) : UpperSet P where
+  carrier := U
+  upper' := U.upper
+
+@[simp]
+theorem coe_upperSetToScottOpen (U : UpperSet P) :
+    ((upperSetToScottOpen U : ScottOpen P) : Set P) = (U : Set P) :=
+  rfl
+
+@[simp]
+theorem coe_scottOpenToUpperSet (U : ScottOpen P) :
+    ((scottOpenToUpperSet U : UpperSet P) : Set P) = (U : Set P) :=
+  rfl
+
+/-- On a finite poset, Scott opens ordered by inclusion are order isomorphic
+to upper sets with mathlib's conventional reverse-inclusion order. -/
+def finiteScottOpenOrderIso : ScottOpen P ≃o (UpperSet P)ᵒᵈ where
+  toFun U := OrderDual.toDual (scottOpenToUpperSet U)
+  invFun U := upperSetToScottOpen (OrderDual.ofDual U)
+  left_inv U := ScottOpen.ext rfl
+  right_inv U := UpperSet.ext rfl
+  map_rel_iff' := by
+    intro U V
+    constructor
+    · intro h x hx
+      exact h hx
+    · intro h x hx
+      exact h hx
+
+end FiniteScottOpens
+
+section AtomicConstruction
+
+variable {P : Type u} [Fintype P] [PartialOrder P]
+
+/-- Real finite mass of a vector on the carrier of a Scott open. -/
+noncomputable def vectorScottMass (p : SubprobabilityVector P)
+    (U : ScottOpen P) : ℝ :=
+  p.mass (U : Set P)
+
+theorem vectorScottMass_nonneg (p : SubprobabilityVector P)
+    (U : ScottOpen P) : 0 ≤ vectorScottMass p U :=
+  p.mass_nonneg (U : Set P)
+
+theorem vectorScottMass_mono (p : SubprobabilityVector P) :
+    Monotone (vectorScottMass p) := by
+  intro U V hUV
+  exact p.mass_mono hUV
+
+theorem vectorScottMass_modular (p : SubprobabilityVector P)
+    (U V : ScottOpen P) :
+    vectorScottMass p U + vectorScottMass p V =
+      vectorScottMass p (ScottOpen.union U V) +
+        vectorScottMass p (ScottOpen.inter U V) := by
+  classical
+  unfold vectorScottMass SubprobabilityVector.mass
+  rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro x hx
+  by_cases hxU : x ∈ U <;> by_cases hxV : x ∈ V <;>
+    simp [hxU, hxV]
+
+/-- An atomic finite vector defines a genuine continuous valuation. -/
+noncomputable def vectorToVSub (p : SubprobabilityVector P) : VSub P := by
+  classical
+  letI : Fintype (ScottOpen P) := Fintype.ofFinite (ScottOpen P)
+  refine ⟨
+    { toFun := fun U => ENNReal.ofReal (vectorScottMass p U)
+      continuous := scottContinuous_of_monotone_finite
+        (fun U V hUV => ENNReal.ofReal_le_ofReal
+          (vectorScottMass_mono p hUV))
+      strict := by simp [vectorScottMass, SubprobabilityVector.mass]
+      modular := ?_ }, ?_⟩
+  · intro U V
+    rw [← ENNReal.ofReal_add (vectorScottMass_nonneg p U)
+        (vectorScottMass_nonneg p V),
+      ← ENNReal.ofReal_add
+        (vectorScottMass_nonneg p (ScottOpen.union U V))
+        (vectorScottMass_nonneg p (ScottOpen.inter U V)),
+      vectorScottMass_modular]
+  · change ENNReal.ofReal (p.mass Set.univ) ≤ 1
+    rw [p.mass_univ]
+    calc
+      ENNReal.ofReal p.totalMass ≤ ENNReal.ofReal 1 :=
+        ENNReal.ofReal_le_ofReal p.total_le_one
+      _ = 1 := by simp
+
+@[simp]
+theorem vectorToVSub_apply (p : SubprobabilityVector P) (U : ScottOpen P) :
+    vectorToVSub p U = ENNReal.ofReal (p.mass (U : Set P)) :=
+  rfl
+
+theorem vectorToVSub_mono :
+    Monotone (vectorToVSub : SubprobabilityVector P → VSub P) := by
+  intro p q hpq U
+  exact ENNReal.ofReal_le_ofReal
+    (hpq (scottOpenToUpperSet U))
+
+end AtomicConstruction
+
+section AtomicReconstruction
+
+variable {P : Type u} [Fintype P] [PartialOrder P]
+
+/-- The principal Scott open generated by a point of a finite poset. -/
+def principalScottOpen (x : P) : ScottOpen P :=
+  upperSetToScottOpen (principalUpperSet x)
+
+/-- The strict principal Scott open above a point of a finite poset. -/
+def puncturedPrincipalScottOpen (x : P) : ScottOpen P :=
+  upperSetToScottOpen (puncturedPrincipalUpperSet x)
+
+/-- Atomic mass recovered from a finite continuous valuation. -/
+def valuationAtom (mu : VSub P) (x : P) : ℝ≥0∞ :=
+  mu (principalScottOpen x) - mu (puncturedPrincipalScottOpen x)
+
+theorem valuation_value_ne_top (mu : VSub P) (U : ScottOpen P) :
+    mu U ≠ ⊤ :=
+  ne_top_of_le_ne_top ENNReal.one_ne_top (mu.value_le_one U)
+
+theorem puncturedPrincipalScottOpen_le_principal (x : P) :
+    puncturedPrincipalScottOpen x ≤ principalScottOpen x := by
+  intro y hy
+  exact hy.1
+
+theorem valuationAtom_ne_top (mu : VSub P) (x : P) :
+    valuationAtom mu x ≠ ⊤ := by
+  apply ne_top_of_le_ne_top ENNReal.one_ne_top
+  exact (tsub_le_self.trans (mu.value_le_one (principalScottOpen x)))
+
+/-- Remove a minimal point from a finite Scott open.  Minimality is exactly
+what makes the remaining upper set Scott open. -/
+def eraseMinimalScottOpen (U : ScottOpen P) (x : P)
+    (hx : Minimal (· ∈ (U : Set P)) x) : ScottOpen P :=
+  upperSetToScottOpen
+    { carrier := (U : Set P) \ {x}
+      upper' := U.upper.erase (by
+        intro y hy hyx
+        exact ((minimal_mem_iff.mp hx).2 hy hyx).symm) }
+
+@[simp]
+theorem mem_eraseMinimalScottOpen_iff (U : ScottOpen P) (x y : P)
+    (hx : Minimal (· ∈ (U : Set P)) x) :
+    y ∈ eraseMinimalScottOpen U x hx ↔ y ∈ U ∧ y ≠ x :=
+  Iff.rfl
+
+theorem eraseMinimal_union_principal (U : ScottOpen P) (x : P)
+    (hx : Minimal (· ∈ (U : Set P)) x) :
+    ScottOpen.union (eraseMinimalScottOpen U x hx) (principalScottOpen x) = U := by
+  apply ScottOpen.ext
+  ext y
+  change ((y ∈ U ∧ y ≠ x) ∨ x ≤ y) ↔ y ∈ U
+  constructor
+  · rintro (hy | hxy)
+    · exact hy.1
+    · exact U.upper hxy (minimal_mem_iff.mp hx).1
+  · intro hy
+    by_cases hyx : y = x
+    · right
+      subst y
+      exact le_rfl
+    · exact Or.inl ⟨hy, hyx⟩
+
+theorem eraseMinimal_inter_principal (U : ScottOpen P) (x : P)
+    (hx : Minimal (· ∈ (U : Set P)) x) :
+    ScottOpen.inter (eraseMinimalScottOpen U x hx) (principalScottOpen x) =
+      puncturedPrincipalScottOpen x := by
+  apply ScottOpen.ext
+  ext y
+  change (((y ∈ U ∧ y ≠ x) ∧ x ≤ y) ↔ (x ≤ y ∧ y ≠ x))
+  constructor
+  · intro hy
+    exact ⟨hy.2, hy.1.2⟩
+  · intro hy
+    exact ⟨⟨U.upper hy.1 (minimal_mem_iff.mp hx).1, hy.2⟩, hy.1⟩
+
+/-- Sum of the recovered atoms belonging to one Scott open. -/
+noncomputable def finiteAtomicMass (mu : VSub P) (U : ScottOpen P) : ℝ≥0∞ := by
+  classical
+  exact ∑ x : P, if x ∈ U then valuationAtom mu x else 0
+
+theorem finiteAtomicMass_erase_add (mu : VSub P) (U : ScottOpen P) (x : P)
+    (hx : Minimal (· ∈ (U : Set P)) x) :
+    finiteAtomicMass mu U =
+      finiteAtomicMass mu (eraseMinimalScottOpen U x hx) + valuationAtom mu x := by
+  classical
+  unfold finiteAtomicMass
+  calc
+    (∑ y : P, if y ∈ U then valuationAtom mu y else 0) =
+        ∑ y : P,
+          ((if y ∈ eraseMinimalScottOpen U x hx then valuationAtom mu y else 0) +
+            if y = x then valuationAtom mu x else 0) := by
+      apply Finset.sum_congr rfl
+      intro y hy
+      by_cases hyx : y = x
+      · subst y
+        have hxU : x ∈ U := (minimal_mem_iff.mp hx).1
+        simp [hxU]
+      · by_cases hyU : y ∈ U <;> simp [hyx, hyU]
+    _ = (∑ y : P,
+          if y ∈ eraseMinimalScottOpen U x hx then valuationAtom mu y else 0) +
+        ∑ y : P, if y = x then valuationAtom mu x else 0 :=
+      Finset.sum_add_distrib
+    _ = (∑ y : P,
+          if y ∈ eraseMinimalScottOpen U x hx then valuationAtom mu y else 0) +
+        valuationAtom mu x := by simp
+
+/-- Finite modularity reconstructs the value of every Scott open as the sum
+of its atomic masses. -/
+theorem valuation_eq_finiteAtomicMass (mu : VSub P) (U : ScottOpen P) :
+    mu U = finiteAtomicMass mu U := by
+  classical
+  induction hn : (U : Set P).ncard using Nat.strong_induction_on generalizing U with
+  | h n ih =>
+      by_cases hUempty : (U : Set P) = ∅
+      · have hU : U = ScottOpen.empty := ScottOpen.ext hUempty
+        subst U
+        simp [finiteAtomicMass, mu.1.strict]
+      · have hUne : (U : Set P).Nonempty :=
+          Set.nonempty_iff_ne_empty.mpr hUempty
+        rcases (Set.toFinite (U : Set P)).exists_minimal hUne with ⟨x, hx⟩
+        let U' : ScottOpen P := eraseMinimalScottOpen U x hx
+        have hcard : (U' : Set P).ncard < n := by
+          rw [← hn]
+          exact Set.ncard_diff_singleton_lt_of_mem
+            (minimal_mem_iff.mp hx).1 (Set.toFinite (U : Set P))
+        have ihU' : mu U' = finiteAtomicMass mu U' :=
+          ih (U' : Set P).ncard hcard U' rfl
+        have hmod := mu.1.modular U' (principalScottOpen x)
+        rw [eraseMinimal_union_principal U x hx,
+          eraseMinimal_inter_principal U x hx] at hmod
+        have hpunct_le :
+            mu (puncturedPrincipalScottOpen x) ≤ mu (principalScottOpen x) :=
+          mu.monotone (puncturedPrincipalScottOpen_le_principal x)
+        calc
+          mu U = mu U + mu (puncturedPrincipalScottOpen x) -
+              mu (puncturedPrincipalScottOpen x) :=
+            (ENNReal.add_sub_cancel_right
+              (valuation_value_ne_top mu (puncturedPrincipalScottOpen x))).symm
+          _ = mu U' + mu (principalScottOpen x) -
+              mu (puncturedPrincipalScottOpen x) := by rw [← hmod]
+          _ = mu U' + (mu (principalScottOpen x) -
+              mu (puncturedPrincipalScottOpen x)) := by
+            rw [add_comm (mu U') (mu (principalScottOpen x)),
+              ← ENNReal.sub_add_eq_add_sub hpunct_le
+                (valuation_value_ne_top mu (puncturedPrincipalScottOpen x)),
+              add_comm]
+          _ = finiteAtomicMass mu U' + valuationAtom mu x := by
+            rw [ihU']
+            rfl
+          _ = finiteAtomicMass mu U :=
+            (finiteAtomicMass_erase_add mu U x hx).symm
+
+/-- Recover the finite real atomic vector of a continuous valuation. -/
+noncomputable def valuationToVector (mu : VSub P) : SubprobabilityVector P where
+  coeff x := (valuationAtom mu x).toReal
+  coeff_nonneg x := ENNReal.toReal_nonneg
+  total_le_one := by
+    have hrepr : mu (ScottOpen.univ : ScottOpen P) =
+        ∑ x : P, valuationAtom mu x := by
+      simpa [finiteAtomicMass] using
+        valuation_eq_finiteAtomicMass mu (ScottOpen.univ : ScottOpen P)
+    have hsum : (∑ x : P, (valuationAtom mu x).toReal) =
+        (mu (ScottOpen.univ : ScottOpen P)).toReal := by
+      rw [← ENNReal.toReal_sum]
+      · exact congrArg ENNReal.toReal hrepr.symm
+      · intro x hx
+        exact valuationAtom_ne_top mu x
+    rw [hsum]
+    simpa using
+      (ENNReal.toReal_le_toReal
+        (valuation_value_ne_top mu (ScottOpen.univ : ScottOpen P))
+        ENNReal.one_ne_top).2 mu.2
+
+@[simp]
+theorem valuationToVector_apply (mu : VSub P) (x : P) :
+    valuationToVector mu x = (valuationAtom mu x).toReal :=
+  rfl
+
+theorem valuationAtom_vectorToVSub (p : SubprobabilityVector P) (x : P) :
+    valuationAtom (vectorToVSub p) x = ENNReal.ofReal (p x) := by
+  rw [show valuationAtom (vectorToVSub p) x =
+      ENNReal.ofReal (p.mass (Set.Ici x)) -
+        ENNReal.ofReal (p.mass (Set.Ici x \ {x})) by rfl,
+    ← ENNReal.ofReal_sub (p.mass (Set.Ici x))
+      (p.mass_nonneg (Set.Ici x \ {x}))]
+  congr 1
+  simpa [upperMass, principalUpperSet, puncturedPrincipalUpperSet] using
+    upperMass_principal_sub_punctured p x
+
+@[simp]
+theorem valuationToVector_vectorToVSub (p : SubprobabilityVector P) :
+    valuationToVector (vectorToVSub p) = p := by
+  apply SubprobabilityVector.ext
+  intro x
+  rw [valuationToVector_apply, valuationAtom_vectorToVSub]
+  exact ENNReal.toReal_ofReal (p.coeff_nonneg x)
+
+@[simp]
+theorem vectorToVSub_valuationToVector (mu : VSub P) :
+    vectorToVSub (valuationToVector mu) = mu := by
+  classical
+  apply VSub.ext
+  intro U
+  calc
+    vectorToVSub (valuationToVector mu) U =
+        ENNReal.ofReal ((valuationToVector mu).mass (U : Set P)) := rfl
+    _ = ENNReal.ofReal
+        (∑ x : P, if x ∈ U then (valuationAtom mu x).toReal else 0) := rfl
+    _ = ∑ x : P,
+        ENNReal.ofReal (if x ∈ U then (valuationAtom mu x).toReal else 0) := by
+      apply ENNReal.ofReal_sum_of_nonneg
+      intro x hx
+      by_cases hxU : x ∈ U <;> simp [hxU, ENNReal.toReal_nonneg]
+    _ = finiteAtomicMass mu U := by
+      unfold finiteAtomicMass
+      apply Finset.sum_congr rfl
+      intro x hx
+      by_cases hxU : x ∈ U
+      · simp [hxU, ENNReal.ofReal_toReal (valuationAtom_ne_top mu x)]
+      · simp [hxU]
+    _ = mu U := (valuation_eq_finiteAtomicMass mu U).symm
+
+/-- Exact order isomorphism between the manuscript's finite atomic stage and
+the genuine continuous-valuation powerdomain of a finite poset. -/
+noncomputable def finiteVSubOrderIso :
+    SubprobabilityVector P ≃o VSub P where
+  toFun := vectorToVSub
+  invFun := valuationToVector
+  left_inv := valuationToVector_vectorToVSub
+  right_inv := vectorToVSub_valuationToVector
+  map_rel_iff' := by
+    intro p q
+    constructor
+    · intro hpq U
+      have h := hpq (upperSetToScottOpen U)
+      exact (ENNReal.ofReal_le_ofReal_iff (q.mass_nonneg (U : Set P))).mp h
+    · intro hpq U
+      exact ENNReal.ofReal_le_ofReal (hpq (scottOpenToUpperSet U))
+
+end AtomicReconstruction
+
+end ContinuousValuation
+end FiniteValuationApproximable

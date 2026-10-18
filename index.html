@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="A browsable collection of recent Domain Theory manuscripts, explanatory notes, and Lean 4 formalizations.">
+  <link rel="canonical" href="https://chanyuxu.github.io/Recent-Progress-on--Domain-Theory/">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/site.css">
+  <title>Recent Progress in Domain Theory</title>
+</head>
+<body data-site-root="./">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site">
+    <header class="site-header collection-header">
+      <div class="site-header-copy">
+        <p class="collection-eyebrow">Research archive</p>
+        <a class="site-title" href="./">Recent Progress in Domain Theory</a>
+        <p class="site-description">Manuscripts, explanatory notes, and auditable Lean 4 developments</p>
+      </div>
+      <div class="site-actions" aria-label="External links">
+        <a class="site-action-button" href="https://chanyuxu.github.io/">Personal site</a>
+        <a class="site-action-button site-action-primary" href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory">GitHub repository</a>
+      </div>
+    </header>
+
+    <main id="content" class="content collection-content">
+      <div class="collection-layout">
+        <aside class="collection-sidebar" aria-label="Paper navigation">
+          <div class="collection-sidebar-inner">
+            <p class="section-label">Browse collection</p>
+            <h2>Papers</h2>
+            <nav class="article-nav collection-nav" data-paper-navigation aria-label="Papers in this collection">
+              <a href="papers/chain-continuity-scott-closed-interpolation/"><time datetime="2026-10">October 2026</time><span>Chain continuity and Scott-closed interpolation</span></a>
+              <a href="papers/point-continuous-central-valuations/"><time datetime="2026-10">October 2026</time><span>Point-continuous and central valuations</span></a>
+              <a href="papers/finite-valuation-approximable-domains/"><time datetime="2026-08">August 2026</time><span>Finite-valuation approximable domains</span></a>
+              <a href="papers/lipschitz-yoneda-final-topology/"><time datetime="2026-08">August 2026</time><span>Lipschitz Yoneda final topology</span></a>
+              <a href="papers/rb-function-space-characterization/"><time datetime="2026-08">August 2026</time><span>RB function-space characterization</span></a>
+              <a href="papers/unit-interval-retracts/"><time datetime="2026-08">August 2026</time><span>Unit-interval retracts</span></a>
+            </nav>
+          </div>
+        </aside>
+
+        <div class="collection-main">
+          <section class="collection-intro" aria-labelledby="collection-title">
+            <p class="section-label">Seven paper packages</p>
+            <h1 id="collection-title">Research notes with the paper and the code side by side.</h1>
+            <p>Each entry combines a readable account of the mathematical question, an available paper or supplementary PDF, the Lean companion archive, and a matching source tree for direct inspection. Formalization limits and external assumptions are stated on the individual paper pages.</p>
+          </section>
+
+          <ol class="paper-list">
+        <li class="paper-entry featured-paper">
+          <div class="paper-date"><time datetime="2026-10-16">16 Oct 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Scott topology, core-compactness and sobriety</p>
+            <h2><a href="papers/core-compact-non-sober-dcpo/">A Non-Sober Core-Compact Meet-Continuous dcpo</a></h2>
+            <p>A meet-continuous dcpo has a compact, second-countable and core-compact Scott space that is neither sober nor locally compact. The expanded supplement compares six pointed orders with a directly presented example without a least element.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The Lean development covers the mathematical content of arXiv v1, while its hash-bound audit targets a pre-upload draft with editorial differences. The supplement is not formalized; human review is pending.</p>
+            <div class="paper-actions">
+              <a href="papers/core-compact-non-sober-dcpo/">Read article</a>
+              <a href="papers/core-compact-non-sober-dcpo/supplement.pdf">Open supplement</a>
+              <a href="papers/core-compact-non-sober-dcpo/lean-source.zip" download>Lean ZIP</a>
+              <a href="https://arxiv.org/abs/2610.22033">arXiv</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-10-13">13 Oct 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Chain approximation and Scott-closed tests</p>
+            <h2><a href="papers/chain-continuity-scott-closed-interpolation/">Chain Continuity and Scott-Closed Interpolation</a></h2>
+            <p>On a chain-continuous dcpo, the square of chain-below is ordinary way-below. A Jónsson algebra makes the square strict; a separate lower-set lattice defeats Scott-closed interpolation.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The independently reviewed Lean project covers an earlier manuscript snapshot with 19 numbered results. arXiv v1 adds a countably based proposition and a Scott-basis conclusion that have not been source-audited in Lean. Human review is pending.</p>
+            <div class="paper-actions">
+              <a href="papers/chain-continuity-scott-closed-interpolation/">Read article</a>
+              <a href="papers/chain-continuity-scott-closed-interpolation/paper.pdf">Open PDF</a>
+              <a href="papers/chain-continuity-scott-closed-interpolation/lean-source.zip" download>Lean ZIP</a>
+              <a href="https://arxiv.org/abs/2610.18692">arXiv</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-10-13">13 Oct 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Valuations and probabilistic powerdomains</p>
+            <h2><a href="papers/point-continuous-central-valuations/">Point-Continuous and Central Valuations</a></h2>
+            <p>Finite witnesses for point-continuity, Fubini objects, the Sorgenfrey-Smyth dcpo, and a descent principle through the lattice of Scott-open sets.</p>
+            <p class="paper-status"><span>Formalization boundary</span> Main-text Sections 2–5; explicit literature axioms; Appendix A is not formalized.</p>
+            <div class="paper-actions">
+              <a href="papers/point-continuous-central-valuations/">Read article</a>
+              <a href="papers/point-continuous-central-valuations/paper.pdf">Open PDF</a>
+              <a href="papers/point-continuous-central-valuations/lean-source.zip" download>Lean ZIP</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-08-08">08 Aug 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Probabilistic powerdomains and semantics</p>
+            <h2><a href="papers/finite-valuation-approximable-domains/">Finite-Valuation Approximable Domains and the Jung-Tix Problem</a></h2>
+            <p>A full Cartesian closed category of pointed countably based FS-domains that is closed under both subprobability and probability valuation powerdomains.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The headline theorem chain and categorical/monadic consequences are checked in a standalone project; source fidelity and the comparison appendix remain separate boundaries.</p>
+            <div class="paper-actions">
+              <a href="papers/finite-valuation-approximable-domains/">Read article</a>
+              <a href="papers/finite-valuation-approximable-domains/paper.pdf">Open PDF</a>
+              <a href="papers/finite-valuation-approximable-domains/lean-source.zip" download>Lean ZIP</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-08-02">02 Aug 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Quasi-metric domain theory</p>
+            <h2><a href="papers/lipschitz-yoneda-final-topology/">Final Topologies of Lipschitz Yoneda-Continuous Maps</a></h2>
+            <p>A formal-ball argument for final topologies of Lipschitz Yoneda-continuous maps, organized around rounded ideals, center points, and retract constructions.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The generalized main implication is proved; the ordinary metric converse remains outside the checked scope.</p>
+            <div class="paper-actions">
+              <a href="papers/lipschitz-yoneda-final-topology/">Read article</a>
+              <a href="papers/lipschitz-yoneda-final-topology/paper.pdf">Open PDF</a>
+              <a href="papers/lipschitz-yoneda-final-topology/lean-source.zip" download>Lean ZIP</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-08-02">02 Aug 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">RB-domains and function spaces</p>
+            <h2><a href="papers/rb-function-space-characterization/">A Function-Space Characterization of RB-Domains</a></h2>
+            <p>A test-domain characterization of RB-domains through function spaces, finite-cover extraction, and a retract construction.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The final equivalence is checked relative to two explicit external theorems.</p>
+            <div class="paper-actions">
+              <a href="papers/rb-function-space-characterization/">Read article</a>
+              <a href="papers/rb-function-space-characterization/paper.pdf">Open PDF</a>
+              <a href="papers/rb-function-space-characterization/lean-source.zip" download>Lean ZIP</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="paper-entry">
+          <div class="paper-date"><time datetime="2026-08-01">01 Aug 2026</time></div>
+          <div class="paper-copy">
+            <p class="paper-series">Quasicontinuous domains</p>
+            <h2><a href="papers/unit-interval-retracts/">Unit-Interval Retracts of Quasicontinuous Domains</a></h2>
+            <p>A concrete complete lattice built from closed subsets of the unit interval gives negative answers to two retract questions.</p>
+            <p class="paper-status"><span>Formalization boundary</span> The counterexample and negative answers are formalized without project-local axioms.</p>
+            <div class="paper-actions">
+              <a href="papers/unit-interval-retracts/">Read article</a>
+              <a href="papers/unit-interval-retracts/paper.pdf">Open PDF</a>
+              <a href="papers/unit-interval-retracts/lean-source.zip" download>Lean ZIP</a>
+            </div>
+          </div>
+        </li>
+          </ol>
+
+          <aside class="verification-note" aria-label="Verification note">
+            <h2>How to read the status labels</h2>
+            <p>A successful Lean build confirms that the included declarations type-check in their stated environment. It does not by itself establish complete source coverage, remove explicit literature assumptions, or replace independent mathematical review.</p>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-current-year>2026</span> Yuxu Chen · <a href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory">Source repository</a></p>
+    </footer>
+  </div>
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

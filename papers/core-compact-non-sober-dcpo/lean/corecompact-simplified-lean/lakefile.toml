@@ -1,0 +1,17 @@
+name = "CoreCompactSimplified"
+version = "0.1.0"
+defaultTargets = ["CoreCompactSimplified"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0-rc2"
+
+[[lean_lib]]
+name = "CoreCompactNonSober"
+
+[[lean_lib]]
+name = "CoreCompactSimplified"

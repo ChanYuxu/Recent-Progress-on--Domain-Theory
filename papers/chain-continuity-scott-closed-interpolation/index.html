@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="How chain approximation recovers continuity, why its interpolation can fail, and what Scott-closed approximation reveals; with the arXiv paper and Lean 4 companion.">
+  <meta name="author" content="Yuxu Chen">
+  <meta name="section-label" content="Chain continuity and Scott-closed interpolation">
+  <meta property="article:published_time" content="2026-10-13">
+  <link rel="canonical" href="https://chanyuxu.github.io/Recent-Progress-on--Domain-Theory/papers/chain-continuity-scott-closed-interpolation/">
+  <link rel="icon" href="../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../assets/site.css?v=20261015-chain">
+  <title>Chain Continuity and Scott-Closed Interpolation | Recent Progress in Domain Theory</title>
+</head>
+<body data-site-root="../../" data-paper-slug="chain-continuity-scott-closed-interpolation">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header-copy">
+        <a class="site-title" href="../../">Recent Progress in Domain Theory</a>
+        <p class="site-description">Manuscripts, explanatory notes, and auditable Lean 4 developments</p>
+      </div>
+      <div class="site-actions" aria-label="External links">
+        <a class="site-action-button" href="https://chanyuxu.github.io/">Personal site</a>
+        <a class="site-action-button site-action-primary" href="https://arxiv.org/abs/2610.18692" target="_blank" rel="noopener">arXiv:2610.18692</a>
+      </div>
+    </header>
+
+    <main id="content" class="content article-layout">
+      <article class="topic-article">
+        <header class="article-header">
+          <p class="article-kicker"><time datetime="2026-10-13">October 13, 2026</time> · Paper note</p>
+          <h1>Chain Continuity and Scott-Closed Interpolation</h1>
+          <p class="article-meta">Yuxu Chen · <a href="https://arxiv.org/abs/2610.18692v1" target="_blank" rel="noopener">arXiv:2610.18692v1</a> · math.GN / math.LO</p>
+        </header>
+
+        <div class="ai-section-notice" role="note" aria-label="AI content notice">
+          <em>All content in this section is AI-generated. AI may make mistakes; please verify important information carefully.</em>
+        </div>
+
+        <p class="article-lead">The ordinary way-below relation tests approximation against directed sets. What remains true if we test only against chains? This paper shows that chain approximation still determines ordinary continuity on dcpos, but that its own interpolation law can fail. It then finds a different failure of interpolation when the tests are Scott-closed sets.</p>
+
+        <div class="article-result"><strong>Main theorem.</strong> On every chain-continuous dcpo, ordinary way-below is the relational square of chain-below: <em>x</em> ≪ <em>y</em> exactly when there is <em>z</em> with <em>x</em> ≪<sub>C</sub> <em>z</em> ≪<sub>C</sub> <em>y</em>. Consequently the dcpo is continuous. In arXiv v1, the corresponding upper sections also form a basis for the Scott topology.</div>
+
+        <h2>Why one composition matters</h2>
+        <p>Chain-below tests fewer sets than ordinary way-below, so a single chain-below step can relate more pairs. The proof isolates a cofinality pattern that any noninterpolating chain-below pair must have. Two such failures cannot occur consecutively. That obstruction makes the relational square idempotent; its lower sections are directed and recover their endpoints as suprema. Scott openness of the corresponding upper sections then identifies the square with ordinary way-below.</p>
+        <p>The paper also singles out a class where the square is unnecessary. Every countably based continuous dcpo has chain-below equal to ordinary way-below and is strongly chain-continuous. The arXiv version states this as a separate proposition.</p>
+
+        <h2>A strict example, and the limit of directed completeness</h2>
+        <p>The square equality does not say that chain-below itself interpolates. A subalgebra lattice built from a locally finite Jónsson algebra of cardinality ℵ<sub>1</sub> is a chain-continuous algebraic complete lattice, but its chain-below relation strictly contains ordinary way-below. This makes the square genuinely necessary, with no continuum-hypothesis assumption.</p>
+        <p>Directed completeness is also essential to the recovery theorem. A separate poset of cardinality ℵ<sub>1</sub> is strongly chain-precontinuous under both the cut-based and existing-supremum conventions, yet fails directed predistributivity under both conventions.</p>
+
+        <h2>Scott-closed tests can fail independently</h2>
+        <p>The second part studies approximation tested by Scott-closed sets. On lower-set lattices, a finite-upper-bound condition characterizes the resulting beneath relation, and interpolation is equivalent to an extension property for directed lower sets. These descriptions turn two earlier interpolation questions into a concrete construction problem.</p>
+        <p>A countable height-two poset supplies the counterexample. Its lower-set lattice is countably based, completely distributive, and algebraic. There, chain-below already agrees with ordinary way-below; nevertheless, the Scott-closed beneath relation is incomparable with their common relation and does not interpolate. Thus this failure persists even after chain approximation has become exact.</p>
+
+        <h2>The Lean 4 companion and its precise boundary</h2>
+        <p>The downloadable standalone project contains 27 Lean files, pinned Lake dependencies, build instructions, and a mathematical scope note. Its reviewed source snapshot has the earlier title <em>Continuity and Interpolation for Chain Approximation</em>. For that snapshot, all 19 numbered results and the required locally finite Jónsson existence consequence were checked; a direct Lean construction supplies that consequence without taking Devlin’s general theorem as an axiom.</p>
+        <p>The transitive axiom sets contain only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>; the development has no project-local mathematical axioms or placeholders. Human mathematical approval remains pending.</p>
+        <p><strong>Version distinction:</strong> the arXiv v1 PDF has a new countably based proposition and an added Scott-basis conclusion in the main theorem. The earlier Lean audit is therefore <em>not</em> a claim of complete arXiv v1 coverage. The stronger algebraicity wording in arXiv v1’s sharpness theorem is already supported by a separate Lean result, but has not been re-audited against v1. See the <a href="SOURCE-VERSIONS.md">source-version comparison</a> and <a href="lean/chain-approximation-lean/README.md">Lean project guide</a>.</p>
+
+        <h2>Paper and code</h2>
+        <div class="download-grid">
+          <section class="download-card">
+            <h3>arXiv manuscript PDF</h3>
+            <p>The 20-page arXiv v1 paper, preserved here for stable reading. The <a href="https://arxiv.org/abs/2610.18692" target="_blank" rel="noopener">arXiv record</a> gives the current version and citation metadata.</p>
+            <div class="resource-actions">
+              <a class="primary-action" href="paper.pdf">Open PDF</a>
+              <a href="paper.pdf" download>Download PDF</a>
+            </div>
+            <p class="download-meta">PDF · 20 pages · 375.7 KiB · SHA-256: <code>271006a8e40402f0303f6d2454d13cd9491ce1a77934b8b0f024a1270389c653</code></p>
+          </section>
+
+          <section class="download-card">
+            <h3>Lean 4 source</h3>
+            <p>The earlier-snapshot Lake project with 27 Lean files, pinned Mathlib, build instructions, and mathematical scope notes.</p>
+            <div class="resource-actions">
+              <a class="primary-action" href="lean-source.zip" download>Download Lean ZIP</a>
+              <a href="lean/chain-approximation-lean/README.md">Browse project guide</a>
+            </div>
+            <p class="download-meta">ZIP · 68.5 KiB · 27 Lean files · SHA-256: <code>0323493283046cec285b82cbab86d328aec2383c45c769c17823f9fc2f175682</code></p>
+          </section>
+        </div>
+
+        <div class="pdf-preview">
+          <a href="paper.pdf" aria-label="Open the arXiv manuscript PDF"><img class="pdf-preview-image" src="paper-preview.png" alt="First page of Chain Continuity and Scott-Closed Interpolation"></a>
+          <div class="pdf-preview-actions"><a class="download-link" href="paper.pdf">Open full PDF</a></div>
+        </div>
+
+        <p class="ai-disclosure">This article was generated by AI. The manuscript and Lean source are linked above for direct inspection.</p>
+      </article>
+
+      <aside class="topic-sidebar" aria-label="Paper navigation">
+        <div class="topic-sidebar-inner">
+          <h2>Papers</h2>
+          <p>Domain Theory manuscripts with explanatory notes and inspectable Lean 4 source.</p>
+          <h3>In this collection</h3>
+          <nav class="article-nav" data-paper-navigation aria-label="Papers in this collection">
+            <a class="active" href="./" aria-current="page"><time datetime="2026-10">October 2026</time><span>Chain continuity and Scott-closed interpolation</span></a>
+          </nav>
+          <div class="sidebar-links">
+            <h3>Related</h3>
+            <a href="../../">All papers</a>
+            <a href="https://arxiv.org/abs/2610.18692v1" target="_blank" rel="noopener">arXiv v1 record</a>
+            <a href="SOURCE-VERSIONS.md">Source-version comparison</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-current-year>2026</span> Yuxu Chen · <a href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory">Source repository</a></p>
+    </footer>
+  </div>
+  <script src="../../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "axioms": {
+    "PointCentralFubini.fpr_integral_add": {
+      "reference": "FPR Theorem 3.5",
+      "url": "https://arxiv.org/html/1910.03752v3",
+      "importedStatement": "Additivity of integration on lower semicontinuous maps.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.fpr_integral_smul": {
+      "reference": "FPR Theorem 3.5",
+      "url": "https://arxiv.org/html/1910.03752v3",
+      "importedStatement": "Homogeneity for nonnegative extended scalars.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.fpr_integral_iSup": {
+      "reference": "FPR Theorem 3.5",
+      "url": "https://arxiv.org/html/1910.03752v3",
+      "importedStatement": "Preservation of nonempty directed suprema in the integrand.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.fpr_functional_unique": {
+      "reference": "FPR Theorem 3.5 and its uniqueness argument",
+      "url": "https://arxiv.org/html/1910.03752v3",
+      "importedStatement": "Linear Scott continuous functionals are determined by open indicators.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.heckmann_approximation": {
+      "reference": "Heckmann 1996 Theorem 4.2, printed page 10",
+      "url": "https://www.rw.cdl.uni-saarland.de/people/heckmann/private/papers/valspaces.ps.gz",
+      "importedStatement": "Directed bounded approximation for continuous and point-continuous valuations.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.jlmz_open_fubini": {
+      "reference": "JLMZ Theorem 21, extended version PDF page 9",
+      "url": "https://arxiv.org/pdf/2102.00510",
+      "importedStatement": "Open-set subprobability Fubini with one point-continuous valuation. Arbitrary-mass extension proved in Lean.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.deBrechtKawai_coconsonant": {
+      "reference": "de Brecht and Kawai 2019 Proposition 7.2, printed page 13:15",
+      "url": "https://lmcs.episciences.org/5679/pdf",
+      "importedStatement": "Co-consonance of the Scott open lattice of a countably based space.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.xuYang_sorgenfrey_scott": {
+      "reference": "Xu and Yang Theorem 5.8 and Example 5.18(4)",
+      "url": "https://arxiv.org/html/2003.06542v1",
+      "importedStatement": "Scott topology equals the upper Vietoris topology for Sorgenfrey compacta.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.fpr_measure_integral": {
+      "reference": "FPR Proposition 4.3",
+      "url": "https://arxiv.org/html/1910.03752v3",
+      "importedStatement": "Agreement of the measure and valuation integrals on lower semicontinuous maps.",
+      "proofInsideLean": false
+    },
+    "PointCentralFubini.ajk_compact_ordered_extension": {
+      "reference": "Alvarez-Manilla, Jung and Keimel, Theorem 27, printed page 16; author-hosted corrected version dated 11 May 2020",
+      "url": "https://achimjungbham.github.io/pub/papers/measures.pdf",
+      "importedStatement": "Existence clause: a bounded continuous valuation on the upward topology of a compact ordered space extends to a finite Radon measure on its Hausdorff topology. Radon means inner regular on all Borel sets. Tau-smoothness is proved internally.",
+      "proofInsideLean": false,
+      "sourceUse": "Lemma 4.4 explicitly cites Theorem 27."
+    }
+  },
+  "internallyProvedCitedResults": {
+    "PointCentralFubini.xuYang_sorgenfrey_dcpo": {
+      "reference": "Xu and Yang Lemma 3.1 and Example 5.18",
+      "url": "https://arxiv.org/html/2003.06542v1",
+      "importedStatement": "Nonempty Sorgenfrey compact subsets form a dcpo under reverse inclusion.",
+      "proofInsideLean": true,
+      "proofDeclaration": "PointCentralFubini.xuYang_sorgenfrey_dcpo",
+      "proofMethod": "Cantor intersection theorem for nonempty compact Hausdorff sets; generic reverse-inclusion dcpo proof."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+import CoreCompactSimplified.AppendixSource
+
+/-! Development checks for the appendix's source-facing interfaces and
+actual axiom dependencies. These do not replace the project-wide audit. -/
+
+#check CoreCompactSimplified.captures_iff_finite_exceptions
+#check CoreCompactSimplified.localization_minimum
+#check CoreCompactSimplified.localization_cardinal_bounds
+#check CoreCompactSimplified.appendix_alphabet_pullback
+#check CoreCompactSimplified.appendix_approximating_family
+#check CoreCompactSimplified.tail_selection
+#check CoreCompactSimplified.tail_selection_under_CH
+#check CoreCompactNonSober.Ambient.witnessFamily_recipe
+#check CoreCompactNonSober.Ambient.uniformWitnessCutoff_spec
+
+#print axioms CoreCompactSimplified.captures_iff_finite_exceptions
+#print axioms CoreCompactSimplified.localization_minimum
+#print axioms CoreCompactSimplified.localization_cardinal_bounds
+#print axioms CoreCompactSimplified.appendix_alphabet_pullback
+#print axioms CoreCompactSimplified.appendix_approximating_family
+#print axioms CoreCompactSimplified.protection_infinite
+#print axioms CoreCompactSimplified.tail_selection
+#print axioms CoreCompactSimplified.tail_selection_under_CH
+#print axioms CoreCompactNonSober.Ambient.witnessFamily_recipe
+#print axioms CoreCompactNonSober.Ambient.uniformWitnessCutoff_spec
+#print axioms CoreCompactNonSober.Localization.TwoPass.block_exponent_sum_identity
+#print axioms CoreCompactNonSober.Localization.TwoPass.captures
+#print axioms CoreCompactNonSober.smallSubsets_card_eq
+#print axioms CoreCompactNonSober.smallSubsets_card_le

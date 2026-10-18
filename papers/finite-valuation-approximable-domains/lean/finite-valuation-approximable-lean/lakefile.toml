@@ -1,0 +1,18 @@
+name = "FiniteValuationApproximableStandalone"
+version = "0.1.0"
+keywords = ["domain-theory", "continuous-valuations", "lean4"]
+defaultTargets = ["FiniteValuationApproximable"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0-rc2"
+
+[[lean_lib]]
+name = "FiniteValuationApproximable"

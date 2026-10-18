@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "papers": [
+    {
+      "slug": "core-compact-non-sober-dcpo",
+      "published": "2026-10-16",
+      "label": "A non-sober core-compact dcpo",
+      "title": "A Non-Sober Core-Compact Meet-Continuous dcpo",
+      "path": "papers/core-compact-non-sober-dcpo/",
+      "artifacts": [
+        "supplement.pdf",
+        "lean-source.zip"
+      ]
+    },
+    {
+      "slug": "chain-continuity-scott-closed-interpolation",
+      "published": "2026-10-13",
+      "label": "Chain continuity and Scott-closed interpolation",
+      "title": "Chain Continuity and Scott-Closed Interpolation",
+      "path": "papers/chain-continuity-scott-closed-interpolation/"
+    },
+    {
+      "slug": "point-continuous-central-valuations",
+      "published": "2026-10-13",
+      "label": "Point-continuous and central valuations",
+      "title": "Point-Continuous and Central Valuations",
+      "path": "papers/point-continuous-central-valuations/"
+    },
+    {
+      "slug": "finite-valuation-approximable-domains",
+      "published": "2026-08-08",
+      "label": "Finite-valuation approximable domains",
+      "title": "Finite-Valuation Approximable Domains and the Jung-Tix Problem",
+      "path": "papers/finite-valuation-approximable-domains/"
+    },
+    {
+      "slug": "lipschitz-yoneda-final-topology",
+      "published": "2026-08-02",
+      "label": "Lipschitz Yoneda final topology",
+      "title": "Final Topologies of Lipschitz Yoneda-Continuous Maps",
+      "path": "papers/lipschitz-yoneda-final-topology/"
+    },
+    {
+      "slug": "rb-function-space-characterization",
+      "published": "2026-08-02",
+      "label": "RB function-space characterization",
+      "title": "A Function-Space Characterization of RB-Domains",
+      "path": "papers/rb-function-space-characterization/"
+    },
+    {
+      "slug": "unit-interval-retracts",
+      "published": "2026-08-01",
+      "label": "Unit-interval retracts",
+      "title": "Unit-Interval Retracts of Quasicontinuous Domains",
+      "path": "papers/unit-interval-retracts/"
+    }
+  ]
+}

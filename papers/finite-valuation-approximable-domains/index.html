@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="An introduction to finite-valuation approximable domains and a positive solution to the category-existence form of the Jung--Tix problem for probabilistic powerdomains.">
+  <meta name="author" content="Yuxu Chen">
+  <meta name="section-label" content="Finite-valuation approximable domains">
+  <meta property="article:published_time" content="2026-08-08">
+  <meta property="article:modified_time" content="2026-09-10">
+  <link rel="canonical" href="https://chanyuxu.github.io/Recent-Progress-on--Domain-Theory/papers/finite-valuation-approximable-domains/">
+  <link rel="icon" href="../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <title>Finite-Valuation Approximable Domains and the Jung-Tix Problem | Recent Progress in Domain Theory</title>
+</head>
+<body data-site-root="../../" data-paper-slug="finite-valuation-approximable-domains">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header-copy">
+        <a class="site-title" href="../../">Recent Progress in Domain Theory</a>
+        <p class="site-description">Manuscripts, explanatory notes, and auditable Lean 4 developments</p>
+      </div>
+      <div class="site-actions" aria-label="External links">
+        <a class="site-action-button" href="https://chanyuxu.github.io/">Personal site</a>
+        <a class="site-action-button site-action-primary" href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory">GitHub repository</a>
+      </div>
+    </header>
+
+    <main id="content" class="content article-layout">
+      <article class="topic-article">
+        <header class="article-header">
+          <p class="article-kicker"><time datetime="2026-08-08">August 8, 2026</time> · updated <time datetime="2026-09-10">September 10, 2026</time> · Paper note</p>
+          <h1>Finite-valuation approximable domains and the Jung&ndash;Tix problem</h1>
+          <p class="article-meta">Yuxu Chen, Hui Kou, and Zhenchao Lyu</p>
+        </header>
+
+        <div class="ai-section-notice" role="note" aria-label="AI content notice">
+          <em>This explanatory article is AI-generated. AI may make mistakes; please verify important information carefully.</em>
+        </div>
+
+        <p class="article-lead">Higher-order probabilistic semantics needs two structures at once: function spaces for higher-order computation and valuation powerdomains for probabilistic choice. For nearly three decades, the Jung&ndash;Tix problem has asked whether these requirements can coexist inside a natural full category of domains. Our new work gives a positive answer to its category-existence, or generalized, form.</p>
+
+        <div class="article-result">
+          <strong>Main result.</strong> We introduce the category <strong>&omega;FVA</strong> of finite-valuation approximable domains. It is a full Cartesian closed subcategory of pointed countably based FS-domains and is closed under both the subprobability and probability valuation powerdomains. Consequently, both valuation monads restrict to <strong>&omega;FVA</strong>.
+        </div>
+
+        <h2>The compatibility problem</h2>
+        <p>Cartesian closed categories provide function-space objects [<em>X</em> &rarr; <em>Y</em>] and therefore support higher-order types. Continuous valuations, on the other hand, provide the probabilistic powerdomains <em>V</em><sub>&le;1</sub>(<em>D</em>) and <em>V</em><sub>1</sub>(<em>D</em>). The difficulty is that the class of all continuous domains is not Cartesian closed, while the familiar Cartesian closed subclasses with strong finite-approximation properties were not known to be preserved by probabilistic powerdomains.</p>
+        <p>Jung and Tix isolated this tension in the 1990s. Their finite-tree results showed both the promise of finite approximation and the difficulty of extending it. The present paper addresses the category-existence formulation: it constructs a nontrivial full Cartesian closed class of continuous domains on which the two valuation constructions remain internal. This is the precise sense in which the paper gives a positive solution; it does not assert that every FS-domain or every RB-domain is preserved by probabilistic powerdomains.</p>
+
+        <h2>First step: probabilistic powerdomains of finite posets</h2>
+        <p>The first part of the proof settles a basic finite case. For every finite poset <em>P</em>, the subprobability valuation domain <em>V</em><sub>&le;1</sub>(<em>P</em>) is a countably based FS-domain. The proof constructs an explicit increasing FS approximate identity by moving valuation mass downward from the maximal points of its current support. Carefully separated erosion rates keep the construction monotone for the stochastic order.</p>
+        <p>The probability case has a sharp boundary: for a finite nonempty poset <em>Q</em>, <em>V</em><sub>1</sub>(<em>Q</em>) is an FS-domain exactly when <em>Q</em> has a least element. Without a least element, the probability powerdomain contains infinitely many minimal valuations, which no finite separator can cover.</p>
+
+        <h2>The new approximation principle</h2>
+        <p>The finite valuation spaces are then used as building blocks for general domains. A domain <em>D</em> is finite-valuation approximable when its identity is the pointwise supremum of an increasing sequence of maps of the form</p>
+        <div class="article-result">
+          <strong>Approximation pattern.</strong>
+          <em>D</em> &rarr; <em>V</em><sub>&le;1</sub>(<em>P</em><sub><em>n</em></sub>) &rarr; <em>D</em>,
+          where each <em>P</em><sub><em>n</em></sub> is finite and the resulting self-maps increase pointwise to the identity.
+        </div>
+        <p>The first map can be read as a finite probabilistic encoding and the second as a reconstruction. Unlike the finite-image deflations used to define RB-domains, the intermediate valuation space is generally infinite, and no retraction equation is required. What remains finite is the underlying order data controlling each approximation stage.</p>
+
+        <h2>The closure theorem</h2>
+        <p>A finite-separation saturation theorem and a unified stochastic-kernel lifting argument establish the required closure properties:</p>
+        <ul class="article-steps">
+          <li>every object of <strong>&omega;FVA</strong> is a pointed countably based FS-domain;</li>
+          <li>the category contains the terminal dcpo and is closed under Scott-continuous retracts and finite products;</li>
+          <li>if <em>X</em> and <em>Y</em> belong to <strong>&omega;FVA</strong>, then the function space [<em>X</em> &rarr; <em>Y</em>] also belongs to <strong>&omega;FVA</strong>;</li>
+          <li>both <em>V</em><sub>&le;1</sub>(<em>D</em>) and <em>V</em><sub>1</sub>(<em>D</em>) remain in <strong>&omega;FVA</strong>.</li>
+        </ul>
+        <p>Thus higher-order functions and probabilistic effects coexist in one full category with all Scott-continuous maps as morphisms.</p>
+
+        <h2>Where the new class sits</h2>
+        <p>The new class is strictly larger than the countably based bc-domains and strictly smaller than the pointed countably based FS-domains. It is also incomparable with the class of RB-domains: some finite-valuation approximable domains are not RB-domains, while a finite RB-domain constructed in the paper is not finite-valuation approximable. This shows that the construction is not merely a reformulation of an existing approximation class.</p>
+
+        <h2>Why the result matters</h2>
+        <p>The main conceptual move is to replace finite-image approximation by approximation through valuation spaces generated by finite posets. This retains finite combinatorial control while allowing the intermediate objects to carry genuine probabilistic structure. The resulting category provides a new domain-theoretic setting in which higher-order function types and probabilistic choice are simultaneously available.</p>
+
+        <h2>Read the paper</h2>
+        <ul class="article-resources">
+          <li><a href="https://arxiv.org/abs/2608.03073" target="_blank" rel="noopener">Abstract and bibliographic record on arXiv</a></li>
+          <li><a href="https://arxiv.org/html/2608.03073" target="_blank" rel="noopener">Experimental HTML version</a></li>
+          <li><a href="https://arxiv.org/pdf/2608.03073" target="_blank" rel="noopener">Download the current 68-page preprint</a></li>
+        </ul>
+
+        <h2>Lean 4 formalization</h2>
+        <p>The accompanying standalone project depends only on the pinned version of Mathlib. It collects the four numbered clauses of the main theorem, the Cartesian-closed structure, and the restrictions of the subprobability and probability valuation monads in explicit Lean declarations.</p>
+        <p>The supplied audit records successful builds of the main-theorem, full-project, and axiom-audit targets. Its declaration scan reports no <code>sorry</code>, <code>admit</code>, project-declared axiom, or opaque proof placeholder, and the headline endpoints use only the standard Lean dependencies <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>. This does not by itself complete an independent manuscript-to-Lean semantic-fidelity review. The post-main-theorem comparison appendix is also outside the claimed complete boundary.</p>
+
+        <h2>Downloads</h2>
+        <div class="download-grid">
+          <section class="download-card">
+            <h3>Current arXiv PDF</h3>
+            <p>Version 3 of the public preprint, revised on September 10, 2026.</p>
+            <div class="resource-actions">
+              <a class="primary-action" href="paper.pdf">Open PDF</a>
+              <a href="paper.pdf" download>Download PDF</a>
+            </div>
+            <p class="download-meta">PDF · 68 pages · about 383 KB · SHA-256: <code>e4f00e44cb65789eb8eef838282fde24bafa029afcc0613c1c7a3df3528b72d7</code></p>
+          </section>
+          <section class="download-card">
+            <h3>Standalone Lean 4 source</h3>
+            <p>A self-contained Mathlib project with 86 Lean files, fixed toolchain files, build instructions, formalization status, and an axiom audit. Build caches and the private source manuscript are excluded.</p>
+            <div class="resource-actions">
+              <a class="primary-action" href="lean-source.zip" download>Download Lean ZIP</a>
+              <a href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory/tree/main/papers/finite-valuation-approximable-domains/lean">Browse Lean files</a>
+            </div>
+            <p class="download-meta">ZIP · 284.6 KiB · 86 Lean files · SHA-256: <code>86e952dadc4d60e93e638fb48e762feac6ef01e5cec467ec463256b53f8c430b</code></p>
+          </section>
+        </div>
+
+        <div class="pdf-preview">
+          <object class="pdf-preview-frame" data="paper.pdf" type="application/pdf" aria-label="Preview of Finite-Valuation Approximable Structures">
+            <p>Your browser cannot display the PDF preview. <a href="paper.pdf">Open the manuscript</a>.</p>
+          </object>
+          <div class="pdf-preview-actions">
+            <a class="download-link" href="paper.pdf">Open full PDF</a>
+          </div>
+        </div>
+
+        <p class="ai-disclosure">This article was generated by AI and reviewed against the arXiv preprint.</p>
+      </article>
+
+      <aside class="topic-sidebar" aria-label="Paper navigation">
+        <div class="topic-sidebar-inner">
+          <h2>Papers</h2>
+          <p>Domain Theory manuscripts with explanatory notes and inspectable Lean 4 source.</p>
+
+          <h3>In this collection</h3>
+          <nav class="article-nav" data-paper-navigation aria-label="Papers in this collection">
+            <a class="active" href="./" aria-current="page">
+              <time datetime="2026-08">August 2026</time>
+              <span>Finite-valuation approximable domains</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-links">
+            <h3>Related</h3>
+            <a href="../../">All papers</a>
+            <a href="https://arxiv.org/abs/2608.03073" target="_blank" rel="noopener">arXiv record</a>
+            <a href="https://github.com/ChanYuxu/Domain-Theory-Seminar" target="_blank" rel="noopener">Domain Theory Seminar</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-current-year>2026</span> Yuxu Chen</p>
+    </footer>
+  </div>
+  <script src="../../assets/site.js" defer></script>
+</body>
+</html>

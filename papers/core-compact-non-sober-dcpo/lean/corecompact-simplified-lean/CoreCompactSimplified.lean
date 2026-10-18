@@ -1,0 +1,2 @@
+import CoreCompactSimplified.MainTheorems
+import CoreCompactSimplified.Consequences

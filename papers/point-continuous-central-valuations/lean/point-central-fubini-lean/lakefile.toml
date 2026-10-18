@@ -1,0 +1,14 @@
+name = "PointCentralFubini"
+version = "0.1.0"
+defaultTargets = ["PointCentralFubini"]
+
+[leanOptions]
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0-rc2"
+
+[[lean_lib]]
+name = "PointCentralFubini"

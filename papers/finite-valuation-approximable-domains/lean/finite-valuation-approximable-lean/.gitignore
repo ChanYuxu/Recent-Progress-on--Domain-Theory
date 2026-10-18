@@ -1,0 +1,5 @@
+/.lake/
+*.swp
+*.olean
+*.ilean
+*.c
