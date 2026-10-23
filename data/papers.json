@@ -13,6 +13,26 @@
       ]
     },
     {
+      "slug": "zfc-fubini-counterexamples",
+      "published": "2026-10-16",
+      "label": "Two ZFC Fubini counterexamples",
+      "title": "Two ZFC Counterexamples to Fubini's Theorem for Continuous Valuations",
+      "path": "papers/zfc-fubini-counterexamples/",
+      "artifacts": [
+        "filter-density-paper.pdf",
+        "cantor-ideal-paper.pdf",
+        "filter-density-lean.zip",
+        "cantor-ideal-lean.zip"
+      ]
+    },
+    {
+      "slug": "ch-fubini-counterexample",
+      "published": "2026-10-15",
+      "label": "The Fubini problem: a CH counterexample",
+      "title": "The Fubini Problem for Continuous Valuations on dcpos: A Counterexample under the Continuum Hypothesis",
+      "path": "papers/ch-fubini-counterexample/"
+    },
+    {
       "slug": "chain-continuity-scott-closed-interpolation",
       "published": "2026-10-13",
       "label": "Chain continuity and Scott-closed interpolation",

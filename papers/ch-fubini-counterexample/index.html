@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="A CH-conditional counterexample to Fubini for continuous probability valuations, with an explanatory article, the manuscript, and a Lean main theorem with explicit verification limits.">
+  <meta name="author" content="Yuxu Chen">
+  <meta name="section-label" content="The Fubini problem: a CH counterexample">
+  <meta property="article:published_time" content="2026-10-15">
+  <link rel="canonical" href="https://chanyuxu.github.io/Recent-Progress-on--Domain-Theory/papers/ch-fubini-counterexample/">
+  <link rel="icon" href="../../assets/favicon.ico">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <title>The Fubini Problem for Continuous Valuations on dcpos: A Counterexample under the Continuum Hypothesis | Recent Progress in Domain Theory</title>
+</head>
+<body data-site-root="../../" data-paper-slug="ch-fubini-counterexample">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header-copy">
+        <a class="site-title" href="../../">Recent Progress in Domain Theory</a>
+        <p class="site-description">Manuscripts, explanatory notes, and auditable Lean 4 developments</p>
+      </div>
+      <div class="site-actions" aria-label="External links">
+        <a class="site-action-button" href="https://chanyuxu.github.io/">Personal site</a>
+        <a class="site-action-button site-action-primary" href="https://github.com/ChanYuxu/Recent-Progress-on--Domain-Theory">GitHub repository</a>
+      </div>
+    </header>
+
+    <main id="content" class="content article-layout">
+      <article class="topic-article">
+        <header class="article-header">
+          <p class="article-kicker"><time datetime="2026-10-15">October 15, 2026</time> · Paper note</p>
+          <h1>The Fubini Problem for Continuous Valuations on dcpos: A Counterexample under the Continuum Hypothesis</h1>
+          <p class="article-meta">Conditional counterexample · Choquet integration · Scott product topology</p>
+        </header>
+
+        <div class="ai-section-notice" role="note" aria-label="AI content notice">
+          <em>This explanatory article is AI-generated. Please check the manuscript, formal statements, and verification limits before relying on its conclusions.</em>
+        </div>
+
+        <p class="article-lead">Changing the order of integration is usually a routine step in probability. For continuous valuations on arbitrary dcpos, it is a substantive question. The manuscript discussed here constructs, under the continuum hypothesis, a Scott-open relation whose two iterated Choquet integrals are 1 and a positive number no larger than ε. The smaller value can be made arbitrarily close to zero, even though both valuations are probabilities and both inner-integral functions are Scott-continuous.</p>
+
+        <div class="article-result">
+          <strong>The result, with its hypothesis.</strong> Assume CH. For every 0 &lt; ε &lt; 1, there are dcpos <em>P</em> and <em>L</em>, continuous probability valuations μ and ρ, and <em>W</em> ∈ σ(<em>P</em> × <em>L</em>) such that
+          <p>∫<sub><em>L</em></sub> ∫<sub><em>P</em></sub> 1<sub><em>W</em></sub>(<em>C</em>, <em>V</em>) dμ(<em>C</em>) dρ(<em>V</em>) = 1,</p>
+          <p>∫<sub><em>P</em></sub> ∫<sub><em>L</em></sub> 1<sub><em>W</em></sub>(<em>C</em>, <em>V</em>) dρ(<em>V</em>) dμ(<em>C</em>) = <em>q</em><sub>ε</sub>,</p>
+          <p><em>q</em><sub>ε</sub> = 1 − ∏<sub><em>n</em> ≥ 1</sub>(1 − ε2<sup>−<em>n</em></sup>), &nbsp; 0 &lt; <em>q</em><sub>ε</sub> ≤ ε &lt; 1.</p>
+          <em>L</em> is a complete lattice; Σ<em>P</em> is first-countable and sober; both Scott spaces are well-filtered. The two functions obtained after the inner integrations are Scott-continuous.
+        </div>
+
+        <h2>Which Fubini equation is at stake?</h2>
+        <p>A dcpo is a partially ordered set in which every nonempty directed subset has a supremum. Its Scott opens are upper sets that detect directed suprema at some stage. A continuous valuation assigns mass to opens, is strict and modular, and preserves arbitrary directed unions. For a lower-semicontinuous nonnegative function, its Choquet integral is defined by the layer-cake formula</p>
+        <div class="article-result">∫ <em>f</em> dν = ∫<sub>0</sub><sup>∞</sup> ν({<em>x</em> : <em>f</em>(<em>x</em>) &gt; <em>r</em>}) d<em>r</em>.</div>
+        <p>In particular, the integral of the indicator of an open set <em>U</em> is ν(<em>U</em>). The domain-theoretic Fubini question asks whether the two orders agree for Scott-continuous functions on the coordinatewise ordered product of two dcpos.</p>
+        <p>The topology matters: σ(<em>P</em> × <em>L</em>) need not equal the ordinary product topology Σ<em>P</em> × Σ<em>L</em>. This is not a counterexample to classical Fubini–Tonelli on measurable product spaces. In this construction, <em>W</em> is genuinely open in the first topology and is not open in the second.</p>
+        <p>The broader context is probabilistic powerdomains. Jia, Lindenhovius, Mislove, and Zamdzhiev constructed commutative valuation submonads on DCPO in <a href="https://arxiv.org/abs/2102.00510" target="_blank" rel="noopener">Commutative Monads for Probabilistic Programming Languages</a>. Jia, Mislove, and Zamdzhiev subsequently introduced the <a href="https://doi.org/10.4230/LIPIcs.CALCO.2021.18" target="_blank" rel="noopener">central valuations monad</a>. Centrality requires a valuation to commute with every partner valuation. The present manuscript gives a CH-conditional failure for the full continuous-valuation setting.</p>
+
+        <h2>A source space with mass-one tails</h2>
+        <p>Start with the unit circle 𝕋 and its normalized Lebesgue probability λ. Under CH, its Borel null sets and positive-measure compact sets can be enumerated as (<em>N</em><sub>γ</sub>) and (<em>K</em><sub>γ</sub>), indexed by γ &lt; ω<sub>1</sub>. Recursively choose <em>a</em><sub>γ</sub> in <em>K</em><sub>γ</sub>, avoiding all <em>N</em><sub>ξ</sub> with ξ ≤ γ and all previously chosen points. Every stage is feasible: its forbidden set is a countable union of null sets, while <em>K</em><sub>γ</sub> has positive measure.</p>
+        <p>Put <em>A</em> = {<em>a</em><sub>γ</sub> : γ &lt; ω<sub>1</sub>}. Null Borel sets have countable, initial-segment-bounded traces on <em>A</em>; every positive-measure compact set meets <em>A</em>; and a Borel set whose trace on <em>A</em> is countable must be null. These are the three properties used by the later construction.</p>
+        <p>Refine the topology on <em>A</em> using basic opens (<em>A</em> ∩ <em>O</em>) ∖ <em>I</em><sub>β</sub>, where <em>O</em> is ordinary open in 𝕋 and <em>I</em><sub>β</sub> = {<em>a</em><sub>γ</sub> : γ &lt; β}. The resulting space is Hausdorff and first-countable. Its Borel probability <em>m</em><sub><em>A</em></sub> has the actual trace identity <em>m</em><sub><em>A</em></sub>(<em>A</em> ∩ <em>B</em>) = λ(<em>B</em>) for Borel <em>B</em>; the construction does not assume that <em>A</em> itself is Borel in the circle.</p>
+        <p>Restricting this measure to opens gives a continuous probability valuation α. Each tail <em>T</em><sub>β</sub> = <em>A</em> ∖ <em>I</em><sub>β</sub> has α-mass one. Yet every compact subset of the refined source is countable and has mass zero. Thus this source probability is not inner regular: the argument must not treat it as a Radon probability.</p>
+
+        <h2>Random small opens, with a large tail attached</h2>
+        <p>Let Ω = 𝕋<sup>ℕ</sup> carry the product probability ℙ. For <em>n</em> ≥ 1, choose an arc length ℓ<sub><em>n</em></sub> = ε2<sup>−<em>n</em></sup> and radius <em>r</em><sub><em>n</em></sub> = ℓ<sub><em>n</em></sub>/2. A sample <em>s</em> = (<em>s</em><sub><em>n</em></sub>) determines the union of circle balls <em>U</em><sub><em>s</em></sub> = ⋃<sub><em>n</em> ≥ 1</sub> <em>B</em>(<em>s</em><sub><em>n</em></sub>, <em>r</em><sub><em>n</em></sub>). Its pullback <em>R</em><sub><em>s</em></sub> to <em>A</em> has α-mass at most ε.</p>
+        <p>Now take <em>L</em> = 𝒪(<em>A</em>), ordered by inclusion, with its full Scott topology. The maps <em>F</em><sub>β</sub>(<em>s</em>) = <em>T</em><sub>β</sub> ∪ <em>R</em><sub><em>s</em></sub> are continuous Ω → Σ<em>L</em>, and every value has α-mass one. At any fixed point <em>x</em> = <em>a</em><sub>γ</sub>, however, the tail stops including <em>x</em> once β &gt; γ. The eventual probability of membership is then just the chance that the random balls hit <em>x</em>:</p>
+        <div class="article-result">ℙ(<em>x</em> ∈ <em>R</em><sub><em>s</em></sub>) = 1 − ∏<sub><em>n</em> ≥ 1</sub>(1 − ℓ<sub><em>n</em></sub>) = <em>q</em><sub>ε</sub>.</div>
+        <p>Independence of the coordinates gives the product. The first ball gives <em>q</em><sub>ε</sub> ≥ ε/2 &gt; 0, and the union bound gives <em>q</em><sub>ε</sub> ≤ ε. The contrast is already visible: every stage has full α-mass, while each fixed point eventually has only a small membership probability.</p>
+
+        <h2>The difficult step: a continuous limit valuation</h2>
+        <p>For a Scott-open test ℋ ⊆ <em>L</em>, consider the ordinary open events <em>E</em><sub>β</sub>(ℋ) = <em>F</em><sub>β</sub><sup>−1</sup>(ℋ). They decrease with β. Since Ω is second-countable, each decreasing ω<sub>1</sub>-sequence of open events eventually becomes constant. Thus</p>
+        <div class="article-result">ψ(ℋ) = ⋂<sub>β &lt; ω<sub>1</sub></sub> <em>E</em><sub>β</sub>(ℋ), &nbsp; ρ(ℋ) = ℙ(ψ(ℋ))</div>
+        <p>defines an ordinary open event ψ(ℋ) and its probability. But eventwise stabilization alone is not enough: its stage depends on ℋ, and continuous valuations must preserve arbitrary directed unions, not merely increasing sequences.</p>
+        <p>The key lemma proves that, for every set-indexed family (ℋ<sub><em>i</em></sub>), the difference ψ(⋃<sub><em>i</em></sub> ℋ<sub><em>i</em></sub>) ∖ ⋃<sub><em>i</em></sub> ψ(ℋ<sub><em>i</em></sub>) has probability zero. Its proof uses a compact positive-measure carrier, dense random incidence, and Baire category. One carrier stage is fixed independently of the test; later stages may depend on the test. It does not take an uncountable intersection of dense sets.</p>
+        <p>This null-defect lemma, together with directed continuity of the ordinary product probability on opens, proves that ρ is a continuous probability valuation on <em>L</em>. The proof is not an appeal to a general rule that decreasing infima of continuous valuations remain continuous.</p>
+
+        <h2>From point membership to a Scott-open relation</h2>
+        <p>The other factor is the Smyth dcpo <em>P</em> = 𝒬(<em>A</em>): the nonempty compact subsets of the refined source, ordered by reverse inclusion. For this source its full Scott topology equals the upper Vietoris topology. The manuscript proves that Σ<em>P</em> is first-countable and sober and that both Σ<em>P</em> and Σ<em>L</em> are well-filtered.</p>
+        <p>Push α forward along the continuous singleton map <em>e</em>(<em>x</em>) = {<em>x</em>} to obtain μ. Use the incidence relation</p>
+        <div class="article-result"><em>W</em> = {(<em>C</em>, <em>V</em>) ∈ <em>P</em> × <em>L</em> : <em>C</em> ⊆ <em>V</em>}.</div>
+        <p>This relation is Scott open for the coordinatewise order product. Its two sections yield the Scott-continuous profiles <em>f</em>(<em>V</em>) = μ(□<em>V</em>) = α(<em>V</em>) and <em>g</em>(<em>C</em>) = ρ({<em>V</em> : <em>C</em> ⊆ <em>V</em>}). In particular, <em>g</em>({<em>x</em>}) = <em>q</em><sub>ε</sub> for every source point.</p>
+
+        <h2>Why the two integrals differ</h2>
+        <p>For 0 ≤ <em>r</em> &lt; 1, the test ℋ<sub><em>r</em></sub> = {<em>V</em> : α(<em>V</em>) &gt; <em>r</em>} has ρ-mass one: every <em>F</em><sub>β</sub>(<em>s</em>) has α-mass one. For <em>r</em> ≥ 1 the test is empty. Consequently, integrating over <em>P</em> first gives</p>
+        <div class="article-result">∫<sub><em>L</em></sub> <em>f</em>(<em>V</em>) dρ(<em>V</em>) = ∫<sub>0</sub><sup>1</sup> 1 d<em>r</em> = 1.</div>
+        <p>In the opposite order, the singleton pushforward reduces the integral of <em>g</em> to the constant <em>q</em><sub>ε</sub> on the source:</p>
+        <div class="article-result">∫<sub><em>P</em></sub> <em>g</em>(<em>C</em>) dμ(<em>C</em>) = ∫<sub><em>A</em></sub> <em>g</em>({<em>x</em>}) dα(<em>x</em>) = <em>q</em><sub>ε</sub>.</div>
+        <p>Both are genuine Choquet computations. Neither missing continuity of an inner integral nor an infinite value accounts for the discrepancy.</p>
+
+        <h2>What the example establishes—and what it does not</h2>
+        <p>Both μ and ρ are noncentral: each has the other as a counterpartner. The manuscript also derives noncommutativity of the usual subprobability continuous-valuation monad under CH. Only Σ<em>P</em> is proved first-countable; the theorem does not assert this for Σ<em>L</em>. No unconditional ZFC counterexample or independence theorem is claimed.</p>
+        <p>The role of CH is to construct the source while keeping all initial stages countable. Removing that hypothesis, finding a counterexample with both Scott spaces first-countable, and identifying stronger intrinsic conditions that force centrality remain questions stated in the manuscript.</p>
+
+        <h2>What Lean has checked</h2>
+        <p>The main declaration <code>CHFubini.paper_main</code> proves the stated conditional existence theorem. A fresh project-cache-independent rebuild on October 15, 2026 passed 3,472 build jobs using Lean <code>v4.30.0-rc2</code> and its pinned mathlib dependency; external dependency caches were reused. An independent environment scan covered 569 project declarations and 45,672 reachable declarations. It found no project-local axioms, <code>sorryAx</code>, or unsafe dependencies. The logical foundations are <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>, not an absence of all axioms.</p>
+        <p>The named sequence <code>paperSequence</code> has a proved injectivity and three-property specification. The complete recursive construction is also proved to exist, but the named sequence is chosen through the weaker specification; its full stage-by-stage binding to the enumerations has not been exported. This is a construction-specification boundary, not an unproved premise in the main theorem.</p>
+        <p>The categorical monad bridge and the final positive boundary involving quasicontinuous/core-compact factors are not formalized. The earlier automated release gate was found to admit false-positive audit records; the figures above come from the separate fresh recheck, not that gate. The downloadable package contains the mathematical sources and a direct verification probe, not the legacy audit automation. Human expert review remains pending. This article is an explanatory account, not a claim of complete line-by-line formalization of the manuscript.</p>
+
+        <h2>Manuscript and source</h2>
+        <div class="download-grid">
+          <section class="download-card">
+            <h3>Manuscript PDF</h3>
+            <p>The complete preprint, including the transfinite source, the arbitrary-union null-defect argument, and the stated open questions.</p>
+            <a class="download-link" href="paper.pdf" download>Download PDF</a>
+            <p class="download-meta">PDF · 18 pages · SHA-256: <code>863b1aff1ea8cf58e3701595d3b2724c9080aca7103c2519604ce5c6ec3a82fb</code></p>
+          </section>
+          <section class="download-card">
+            <h3>Lean 4 source</h3>
+            <p>A standalone Lean source snapshot, the pinned toolchain, a direct type/axiom probe, and explicit verification boundaries. The paper TeX, build caches, and negative-test fixtures are excluded.</p>
+            <a class="download-link" href="lean-source.zip" download>Download Lean source</a>
+            <p><a href="lean/README.md">Source index and verification scope</a></p>
+            <p class="download-meta">ZIP · SHA-256: <code>b3d6bd9316498cbb5becd10fc0ad1cd60101aee19f14b631f75ef6b0723faeb8</code></p>
+          </section>
+        </div>
+
+        <div class="pdf-preview">
+          <object class="pdf-preview-frame" data="paper.pdf" type="application/pdf" aria-label="Preview of The Fubini Problem for Continuous Valuations on dcpos: A Counterexample under the Continuum Hypothesis">
+            <p>Your browser cannot display the PDF. <a href="paper.pdf">Open the manuscript</a>.</p>
+          </object>
+          <div class="pdf-preview-actions"><a class="download-link" href="paper.pdf">Open full PDF</a></div>
+        </div>
+
+        <p class="ai-disclosure">This explanatory article was generated by AI from the manuscript and the recorded formalization evidence. Mathematical and human-review limits are stated above.</p>
+      </article>
+
+      <aside class="topic-sidebar" aria-label="Paper navigation">
+        <div class="topic-sidebar-inner">
+          <h2>Papers</h2>
+          <p>Domain Theory manuscripts with explanatory notes and inspectable Lean 4 source.</p>
+          <h3>Articles</h3>
+          <nav class="article-nav" data-paper-navigation aria-label="Papers in this collection">
+            <a href="../core-compact-non-sober-dcpo/"><time datetime="2026-10">October 2026</time><span>A non-sober core-compact dcpo</span></a>
+            <a href="../zfc-fubini-counterexamples/"><time datetime="2026-10">October 2026</time><span>Two ZFC Fubini counterexamples</span></a>
+            <a class="active" href="./" aria-current="page"><time datetime="2026-10">October 2026</time><span>The Fubini problem: a CH counterexample</span></a>
+            <a href="../chain-continuity-scott-closed-interpolation/"><time datetime="2026-10">October 2026</time><span>Chain continuity and Scott-closed interpolation</span></a>
+            <a href="../point-continuous-central-valuations/"><time datetime="2026-10">October 2026</time><span>Point-continuous and central valuations</span></a>
+            <a href="../finite-valuation-approximable-domains/"><time datetime="2026-08">August 2026</time><span>Finite-valuation approximable domains</span></a>
+            <a href="../lipschitz-yoneda-final-topology/"><time datetime="2026-08">August 2026</time><span>Lipschitz Yoneda final topology</span></a>
+            <a href="../rb-function-space-characterization/"><time datetime="2026-08">August 2026</time><span>RB function-space characterization</span></a>
+            <a href="../unit-interval-retracts/"><time datetime="2026-08">August 2026</time><span>Unit-interval retracts</span></a>
+          </nav>
+          <div class="sidebar-links">
+            <h3>Related</h3>
+            <a href="../../">All papers</a>
+            <a href="../point-continuous-central-valuations/">Point-continuous and central valuations</a>
+            <a href="https://arxiv.org/abs/2102.00510" target="_blank" rel="noopener">Commutative valuation submonads</a>
+            <a href="https://doi.org/10.4230/LIPIcs.CALCO.2021.18" target="_blank" rel="noopener">The central valuations monad</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer"><p>© <span data-current-year>2026</span> Yuxu Chen</p></footer>
+  </div>
+  <script src="../../assets/site.js" defer></script>
+</body>
+</html>

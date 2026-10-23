@@ -1,0 +1,174 @@
+{
+  "snapshot_date": "2026-10-15",
+  "audited_manuscript_sha256": "6124b207a3addaa2adb9b02b6b5825dd8953548bca5913c2fadea66894174979",
+  "distributed_manuscript_sha256": "458411926ba0bc4908d85da8f06534e0476a8c00e219af0fd996e1c66c84f242",
+  "editorial_revision": {
+    "date": "2026-10-15",
+    "changes": [
+      "State that GPT generated the initial counterexample construction",
+      "Remove the competing-interest declaration",
+      "Adopt the approved Fubini Problem title and PDF title metadata"
+    ],
+    "unchanged_text_sha256": "28c27a3a922436c28b3b521f3efa16c076fe2ddb71415fd023edad133f70629a",
+    "original_formal_audit_preserved": true,
+    "new_formal_audit_performed": false,
+    "mathematical_text_unchanged_outside_title_metadata_and_declarations": true
+  },
+  "mathematical_entrypoint": "CHFubini.paper_main",
+  "main_declaration_type": "CHFubini.PaperMainClaim",
+  "main_type_sha256": "e8627c38db7a2c10fea83be23803b3c4c7e63d80b24ca6a0459eb1d4cc56b382",
+  "original_fresh_recheck": {
+    "checked_at": "2026-10-15T04:56:11.503Z",
+    "status": "main_recheck_passed_full_scope_partial_legacy_pipeline_failed",
+    "build_jobs": 3472,
+    "kernel_trust_level": 0,
+    "project_declarations": 569,
+    "reachable_declarations": 45672,
+    "main_local_closure": 379,
+    "local_axiom_count": 0,
+    "unsafe_count": 0,
+    "sorryAx_present": false,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "project_cache_reused": false,
+    "external_cache_reused": true
+  },
+  "toolchain": "Lean (version 4.30.0-rc2, arm64-apple-darwin24.6.0, commit 3dc1a088b6d2d8eafe25a7cd7ec7b58d731bd7cc, Release)",
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "locked_rev": "5450b53e5ddc75d46418fabb605edbf36bd0beb6",
+      "actual_head": "5450b53e5ddc75d46418fabb605edbf36bd0beb6",
+      "dirty": ""
+    },
+    {
+      "name": "plausible",
+      "locked_rev": "86210d4ad1b08b086d0bd638637a75246523dbb8",
+      "actual_head": "86210d4ad1b08b086d0bd638637a75246523dbb8",
+      "dirty": ""
+    },
+    {
+      "name": "LeanSearchClient",
+      "locked_rev": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "actual_head": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "dirty": ""
+    },
+    {
+      "name": "importGraph",
+      "locked_rev": "cdab3938ccabbdb044be6896e251b5814bec932e",
+      "actual_head": "cdab3938ccabbdb044be6896e251b5814bec932e",
+      "dirty": ""
+    },
+    {
+      "name": "proofwidgets",
+      "locked_rev": "2db6054a44326f8c0230ee0570e2ddb894816511",
+      "actual_head": "2db6054a44326f8c0230ee0570e2ddb894816511",
+      "dirty": ""
+    },
+    {
+      "name": "aesop",
+      "locked_rev": "f0c6e183ea26531e82773feb4b73ab6595ca17a5",
+      "actual_head": "f0c6e183ea26531e82773feb4b73ab6595ca17a5",
+      "dirty": ""
+    },
+    {
+      "name": "Qq",
+      "locked_rev": "1cc7e819b9b9bc1e87c9edcccb62e0269e00a809",
+      "actual_head": "1cc7e819b9b9bc1e87c9edcccb62e0269e00a809",
+      "dirty": ""
+    },
+    {
+      "name": "batteries",
+      "locked_rev": "5c57f3857ba81924a88b2cdf4f062e34ec04ff11",
+      "actual_head": "5c57f3857ba81924a88b2cdf4f062e34ec04ff11",
+      "dirty": ""
+    },
+    {
+      "name": "Cli",
+      "locked_rev": "13567aed1ac4f12aea9484178e07e51f8c9f7658",
+      "actual_head": "13567aed1ac4f12aea9484178e07e51f8c9f7658",
+      "dirty": ""
+    }
+  ],
+  "formalization_limits": {
+    "main_theorem": "proved_conditional_on_CH",
+    "whole_manuscript": "partial",
+    "fixed_named_sequence_full_recursive_specification": "not_exported",
+    "categorical_monad_bridge": "not_formalized",
+    "section_7_positive_boundary": "not_formalized",
+    "human_review": "pending"
+  },
+  "distribution": "Curated mathematical source and unchanged direct probe, not the original working directory or historical audit automation.",
+  "verified_input_hashes": {
+    "CHFubini.lean": "2dbc7b15489713d96e25b24ad109b602a85a87ba8753f7e2a9908a3b3b7b49b2",
+    "CHFubini/BorelCardinality.lean": "5898d76b7f5a4d1df05303e3fa88e3882e2dfd4a11a0711a2e6b2cbeff1af7f9",
+    "CHFubini/CHConstruction.lean": "7e9f1c2fe8ef16ab607103fb6b5257f50dde53b50177124768033317af08dc24",
+    "CHFubini/Choquet.lean": "03f9fa45aea2663e5a9687b97e97ec438bcd77c87511435f4bb76954fdb0a608",
+    "CHFubini/ChoquetCalculations.lean": "bea1e63b0b7e59168834c528db2f9ef849945a021b98438a8ea426e53c54bea5",
+    "CHFubini/CircleProbability.lean": "5254cd3a8eef09f043589c15c9699d983d8ee1fafe15da9e84a23603b615bead",
+    "CHFubini/CompleteLatticeWellFiltered.lean": "bfedb539ba13dab73fd76779184b6af590b76b77a0764b12526944b05a6dba9f",
+    "CHFubini/DefinitionBridges.lean": "eb65c350099e9a74831a7dda55ca4a1890527d98972725bf52cdb28688d48e2f",
+    "CHFubini/DenseIncidence.lean": "9390c441bcaaef7a404b1287de4050ab5cbe4c56afff1b1d2346659e0db7e53b",
+    "CHFubini/EventStabilization.lean": "8495542ebf3ef5c9361c0303ee33d4077ee7de97323230ae7ec8d50be85d90ac",
+    "CHFubini/EventValues.lean": "e5d14b9761907801c3bbf03390532f48ee736f6b76782e6e92a0926f7a1fcdd8",
+    "CHFubini/Foundations.lean": "69e84fe08aa95a236840580435bb251f6aee1c37d5959d70e36dc6b33f4d3536",
+    "CHFubini/LimitingValuation.lean": "f8bdcbaee8666ef953d5616e41176dc24b50d937c5ef79c30ad8cc7859666a32",
+    "CHFubini/MainStatement.lean": "0e43fb1a062a06cb97781c31c807cc190b0b48dcf01d4ca84689622887f98a79",
+    "CHFubini/MainTheorems.lean": "ad6dca7818a035af7f97aa89e13437c719311a11b2cace6f142a88a95b0125ac",
+    "CHFubini/Noncentral.lean": "6af9fe095fd122e9c693e19afc2895fb7ae8ac20284195dd069a7114bb1c9dba",
+    "CHFubini/OrdinalStages.lean": "4c0b5159861daff3154b8b4ecd90a07f9b06ef872258d3e32337d29633d04b9a",
+    "CHFubini/OuterBase.lean": "7d74be140d4eafab5548ef7a606dabb8484b534c1125735ffa4fa8d39197bdff",
+    "CHFubini/PositiveCarrier.lean": "3c1668fc1f848813b239d63affd651e564f7a72d19fa1b32fb8e30914ab3d826",
+    "CHFubini/ProductNonOpen.lean": "c0316867c764289104729aba88ec9535c23ad27d8c88a8ff2a67de525d4dee65",
+    "CHFubini/RadonValuation.lean": "dae3546a8dafab890e6845a7c58cdc5bb122bea195452172d66c72f16b5a2d65",
+    "CHFubini/RandomOpenContinuity.lean": "2a64d18bf86e65aaf033babd4654cf43b7f09ec72151eba663e0a090dd363ced",
+    "CHFubini/RhoTests.lean": "f9ecbd732ea2c2b021265b938f3b9df2672586cc30eb2c1381befba34128227b",
+    "CHFubini/Smyth.lean": "a5036e397fb2f1bc82dad9a43026235d3dcd1a76ffb2dd937494afe9ad1d853f",
+    "CHFubini/Sobriety.lean": "a12a0c98f3dd006b9bc702245068832308e6dd181d0df365b8ef7c3d38b6aa3f",
+    "CHFubini/SourceConstruction.lean": "82aaf8c4514371bc6d9c9746e89da8050fe5df11b1307093d651853fae9536e9",
+    "CHFubini/SourceMeasure.lean": "9786bbf90bcc17089a95e39250e61afd16c622663aa2dda817312a6d7c177f56",
+    "CHFubini/SourceRepresentatives.lean": "16c5f0967bb3509b969bd8b4f052fe8bf67587eef61ae4b195202605accc2bd3",
+    "CHFubini/SourceResults.lean": "2a7018358265e45bbb0bc2cc42be36cdfd74be2fc1782c55bbeb4b0885f107d0",
+    "CHFubini/SourceSmyth.lean": "5e7e1854778e371867cc52454ca48931141fa42a994c9c74a40fb105586bdca4",
+    "CHFubini/TailTopology.lean": "65ac632cdb9ec5bd116d24d705171c9bfce5d07c6d828907ce5c0a5f4815d73f",
+    "CHFubini/WellFiltered.lean": "895cc0498f2c650010c5eafd5c030c33cea0b19f60e8ff4572b782381e1dc64b",
+    "lake-manifest.json": "844a3fdbd6b5ab42bb8337c5f957fd2801014cc5119f21073fe3d98b0cec524f",
+    "lakefile.toml": "d19552b19d664c21576db2c5d77e690a2002f90d061d9a937e5b91004f17b2e6",
+    "lean-toolchain": "ce4c4e3d87434b9663f46de25ce34b48a0cf0d392e0a320a0787b4674a2d7b61"
+  },
+  "direct_probe_sha256": "651d433d73b9f4dee61afccb33386bd7c2e014c6d8a07fc8fb65a7a3966d67db",
+  "original_recheck_evidence_hashes": {
+    "RECHECK_REPORT.md": "004010189dc56ab41a1aced3474a9f5ac01fffe25ed35eec12b9217e287e6eab",
+    "source-independent.md": "4c1594e8bc6a4cbf19daaed911ea98cb58ce62e0444d3c2e74186617a6c393aa",
+    "topology-independent.md": "dcbdfc5c6fba4501d434ea40d1dd95e72874c07c670466af853ff1274da00f43",
+    "integrity-independent.md": "b176a814211aefec8a1d269bad0c1bd4a5f9cc773483380e5bc03eb8487b0120",
+    "snapshot.json": "376b1d65a354f92bdb90f8b6e2c1263eba644eeaa61872d5bc34e55f37220c92",
+    "fresh-copy-build.json": "59eda569046a8268490cdfe610db5337e19386c83adef882c193e4441b4998d3",
+    "fresh-copy-build.log": "f82003836b356ab9b1e677999ac24e9ae597f9ed04d92d576a62e10e1893565b",
+    "SourceProbe.lean": "651d433d73b9f4dee61afccb33386bd7c2e014c6d8a07fc8fb65a7a3966d67db",
+    "source-type-probe.log": "0b43eff91f53e8489ceb56a3360d10eeb6bee01267412e142f9eacc3a1f306f5",
+    "source-type-probe.execution.json": "d246da1e358924f0a9d288edbb58bc6b2ed7d1d2aeb3b9af53787b2fcc2af054",
+    "RecheckStream.lean": "69f1e235769e5de59aee1ab0791e206766c6ba2714649bdfbc789c8f952bd3d1",
+    "stream-environment.jsonl": "5870e4b667f19d8d3297a67069e211a597656e24d670bad9e2a8a418b04103a4",
+    "stream-environment.execution.json": "549049982f453153146eb83000fb9c47ce4331c8e2566bd42b94f667262eed13",
+    "independent-environment.json": "380391e368b4fabae76b33d08e4130761030ab81cec40bba6ba259829faafa6b",
+    "negative-import-probe.json": "7b4e079fd92463544fe91a805ce24d11eb797d4b9300056723c9606e3b407e60",
+    "negative-import-probe.log": "e449122973d9cedeef518e299707723efd3f8405bd12d5ee9b65be8b4587a8aa",
+    "negative-fixture-compilation.log": "82943df00d1508d6424543f213b1790c576c682fb89179a9b249ce4353666638",
+    "legacy-gate-false-green.json": "6b7c444ce59090ed8129447ad734d0ffc28609580545bb7d69d623b9b2e9f3f9",
+    "test-legacy-gate.mjs": "724f2173b1a4756233402bfcd7640bc36c590409ffae501ff55089f38160b440",
+    "analyze-environment.mjs": "513a0d8fb46d606caa94615e41cb51f15df521b7fbd724b09ae4b4d7b5264dfa",
+    "abandoned-environment-attempt.json": "97102939c890d24e01e28a32f05a2ff51498a63e97b18447efe12df91189e907"
+  },
+  "excluded": [
+    "build caches",
+    "historical audit automation and success manifests",
+    "experimental candidates",
+    "deliberate negative fixtures"
+  ],
+  "human_review": "pending",
+  "distributed_manuscript_title": "The Fubini Problem for Continuous Valuations on dcpos: A Counterexample under the Continuum Hypothesis"
+}
