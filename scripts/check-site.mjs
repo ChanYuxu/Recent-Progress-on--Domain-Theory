@@ -52,7 +52,15 @@ if (publishedDates.join('\n') !== sortedDates.join('\n')) {
 for (const paper of registry.papers) {
   const paperRoot = join(root, paper.path);
   const artifacts = paper.artifacts ?? ['paper.pdf', 'lean-source.zip'];
-  for (const required of ['index.html', ...artifacts, 'lean', 'lean/README.md']) {
+  const sourceTree = paper.sourceTree === undefined ? true : paper.sourceTree;
+  if (typeof sourceTree !== 'boolean') {
+    failures.push(`${paper.slug}: sourceTree must be a boolean`);
+  }
+  if (sourceTree === false && !artifacts.some((artifact) => artifact.endsWith('.zip'))) {
+    failures.push(`${paper.slug}: a ZIP-only entry must list a Lean archive`);
+  }
+  const sourcePaths = sourceTree === false ? [] : ['lean', 'lean/README.md'];
+  for (const required of ['index.html', ...artifacts, ...sourcePaths]) {
     if (!existsSync(join(paperRoot, required))) {
       failures.push(`${paper.slug}: missing ${required}`);
     }

@@ -2,6 +2,14 @@
   "version": 1,
   "papers": [
     {
+      "slug": "algebraic-retract-representations-coherent-continuous-dcpos",
+      "published": "2026-11-20",
+      "label": "Algebraic retract representations",
+      "title": "Algebraic retract representations of coherent continuous dcpos",
+      "path": "papers/algebraic-retract-representations-coherent-continuous-dcpos/",
+      "sourceTree": false
+    },
+    {
       "slug": "core-compact-non-sober-dcpo",
       "published": "2026-10-16",
       "label": "A non-sober core-compact dcpo",
