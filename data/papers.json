@@ -2,6 +2,18 @@
   "version": 1,
   "papers": [
     {
+      "slug": "di-domain-classification",
+      "published": "2026-11-25",
+      "label": "Stable categories of dI-domains",
+      "title": "Stable-retract-closed cartesian closed subcategories of countably based dI-domains",
+      "path": "papers/di-domain-classification/",
+      "artifacts": [
+        "paper.pdf",
+        "lean.zip"
+      ],
+      "sourceTree": false
+    },
+    {
       "slug": "algebraic-retract-representations-coherent-continuous-dcpos",
       "published": "2026-11-20",
       "label": "Algebraic retract representations",
